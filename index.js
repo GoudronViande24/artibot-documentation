@@ -21,7 +21,7 @@ export default ({ config }) => {
 		var choices = [];
 		pages.forEach(page => choices.push([page.name, page.name]));
 	} catch {
-		throw new Error("[Documentation] Config is not valid!");
+		throw new Error("[Documentation]: config is not valid!");
 	}
 
 	return new Module({
