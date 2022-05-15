@@ -17,7 +17,13 @@ const { version } = require('./package.json');
 export default ({ config }) => {
 	try {
 		var { name, commandName, commandDescription, argName, argDescription, pages } = config.documentation;
-		if (!name || !commandName || !commandDescription || !argName || !argDescription || !pages) throw new Error();
+		if (!name) name = "Documentation";
+		if (!commandName) commandName = "documentation";
+		if (!argName) argName = "page";
+		if (!commandDescription || !argDescription || !pages) {
+			throw new Error("[Documentation]: config is not valid!");
+		}
+		
 		var choices = [];
 		pages.forEach(page => choices.push([page.name, page.name]));
 	} catch {
