@@ -14,15 +14,13 @@ const { version } = require('./package.json');
  * @param {Artibot} artibot
  * @returns {Module}
  */
-export default ({ config }) => {
+export default (artibot, customConfig) => {
 	try {
-		var { name, commandName, commandDescription, argName, argDescription, pages } = config.documentation;
+		var { name, commandName, commandDescription, argName, argDescription, pages } = customConfig;
+		if (!commandDescription || !argDescription || !pages) throw new Error("[Documentation]: config is not valid!");
 		if (!name) name = "Documentation";
 		if (!commandName) commandName = "documentation";
 		if (!argName) argName = "page";
-		if (!commandDescription || !argDescription || !pages) {
-			throw new Error("[Documentation]: config is not valid!");
-		}
 		
 		var choices = [];
 		pages.forEach(page => choices.push([page.name, page.name]));
