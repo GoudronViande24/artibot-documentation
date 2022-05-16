@@ -23,7 +23,7 @@ export default (artibot, customConfig) => {
 		if (!argName) argName = "page";
 		
 		var choices = [];
-		pages.forEach(page => choices.push([page.name, page.name]));
+		pages.forEach(page => choices.push({name: page.name, value: page.name}));
 	} catch {
 		throw new Error("[Documentation]: config is not valid!");
 	}
@@ -45,7 +45,7 @@ export default (artibot, customConfig) => {
 							.setName(argName)
 							.setDescription(argDescription)
 							.setRequired(true)
-							.addChoices(choices)
+							.addChoices(...choices)
 					),
 				mainFunction: async (interaction, { createEmbed }) => {
 					const page = pages.find(page => page.name == interaction.options.getString(argName));
