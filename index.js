@@ -1,4 +1,4 @@
-import { SlashCommandBuilder } from "@discordjs/builders";
+import { SlashCommandBuilder } from "discord.js";
 import Artibot, { Module, SlashCommand } from "artibot";
 
 import { createRequire } from 'module';
@@ -21,9 +21,9 @@ export default (artibot, customConfig) => {
 		if (!name) name = "Documentation";
 		if (!commandName) commandName = "documentation";
 		if (!argName) argName = "page";
-		
+
 		var choices = [];
-		pages.forEach(page => choices.push({name: page.name, value: page.name}));
+		pages.forEach(page => choices.push({ name: page.name, value: page.name }));
 	} catch {
 		throw new Error("[Documentation]: config is not valid!");
 	}
