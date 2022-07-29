@@ -33,6 +33,7 @@ export default (artibot, customConfig) => {
 		name: "Documentation",
 		version,
 		repo: "GoudronViande24/artibot-documentation",
+		packageName: "artibot-documentation",
 		langs: "any",
 		parts: [
 			new SlashCommand({

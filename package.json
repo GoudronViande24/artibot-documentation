@@ -1,6 +1,6 @@
 {
   "name": "artibot-documentation",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Create documentation, guide or custom help command for your Discord bot",
   "main": "index.js",
   "type": "module",
