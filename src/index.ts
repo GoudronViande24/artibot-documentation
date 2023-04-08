@@ -7,6 +7,9 @@ import { ArtibotDocumentationConfig, Page } from "./interfaces.js";
 const require = createRequire(import.meta.url);
 const { version } = require('../package.json');
 
+export * from "./builders.js";
+export * from "./interfaces.js";
+
 let config: ArtibotDocumentationConfig;
 
 /**
