@@ -1,4 +1,5 @@
 import { ArtibotDocumentationConfigBuilder, PageBuilder } from "./builders.js";
+import { EmbedAuthorOptions } from "discord.js";
 
 /**
  * Configuration for the documentation module
@@ -35,5 +36,5 @@ export interface Page {
 	/** Image of the page */
 	image?: string;
 	/** Author of the page */
-	author?: string;
+	author?: EmbedAuthorOptions;
 }

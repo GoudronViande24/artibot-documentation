@@ -1,4 +1,5 @@
 import { ArtibotDocumentationConfig, Page } from "./interfaces.js";
+import { EmbedAuthorOptions } from "discord.js";
 
 /**
  * Config builder for the documentation module
@@ -77,7 +78,7 @@ export class PageBuilder implements Page {
 	content: string = "Content";
 	icon?: string;
 	image?: string;
-	author?: string;
+	author?: EmbedAuthorOptions;
 
 	/**
 	 * Set the name of the page
@@ -119,8 +120,51 @@ export class PageBuilder implements Page {
 	 * Set the author of the page
 	 * @param author Author of the page
 	 */
-	public setAuthor(author: string): this {
+	public setAuthor(author: EmbedAuthorOptions | ((author: EmbedAuthorOptionsBuilder) => EmbedAuthorOptions)): this {
+		// If the author is a function, call it with a new builder
+		if (typeof author == "function") author = author(new EmbedAuthorOptionsBuilder());
 		this.author = author;
+		return this;
+	}
+}
+
+/**
+ * Author config builder for the documentation module
+ * @since 3.0.0
+ * @see EmbedAuthorOptions
+ */
+export class EmbedAuthorOptionsBuilder implements EmbedAuthorOptions {
+	name: string = "Artibot";
+	iconURL?: string;
+	url?: string;
+
+	/**
+	 * Set the name of the author
+	 * @param name Name of the author
+	 * @since 3.0.0
+	 */
+	public setName(name: string): this {
+		this.name = name;
+		return this;
+	}
+
+	/**
+	 * Set the icon URL of the author
+	 * @param iconURL Icon URL of the author
+	 * @since 3.0.0
+	 */
+	public setIconURL(iconURL: string): this {
+		this.iconURL = iconURL;
+		return this;
+	}
+
+	/**
+	 * Set the URL of the author
+	 * @param url URL of the author
+	 * @since 3.0.0
+	 */
+	public setURL(url: string): this {
+		this.url = url;
 		return this;
 	}
 }

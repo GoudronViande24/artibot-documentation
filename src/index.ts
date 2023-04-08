@@ -62,7 +62,7 @@ async function mainFunction(interaction: ChatInputCommandInteraction<"cached">, 
 
 	if (page.icon) embed.setThumbnail(page.icon);
 	if (page.image) embed.setImage(page.image);
-	if (page.author) embed.setAuthor({ name: page.author });
+	if (page.author) embed.setAuthor(page.author);
 
 	await interaction.reply({
 		embeds: [embed],
